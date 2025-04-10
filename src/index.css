@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles */
+body {
+  @apply bg-white text-gray-900 font-sans;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.transform-gpu {
+  transform: translate3d(0, 0, 0);
+}
+
+.blur-3xl {
+  --tw-blur: blur(64px);
+  filter: var(--tw-blur);
+}
+
+.isolate {
+  isolation: isolate;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold text-gray-900;
+}
+
+a {
+  @apply text-blue-600 hover:text-blue-800;
+}
+
+button {
+  @apply rounded-lg px-4 py-2 font-semibold shadow-sm;
+}
+
+button.primary {
+  @apply bg-gray-900 text-white hover:bg-gray-800;
+}
+
+button.secondary {
+  @apply bg-white text-gray-900 border border-gray-300 hover:bg-gray-100;
+}
+
+.container {
+  @apply mx-auto max-w-7xl px-6;
+}
+
+.header {
+  @apply flex items-center justify-between py-6;
+}
+
+.hero {
+  @apply text-center py-24 sm:py-32;
+}
+
+.hero-title {
+  @apply text-4xl sm:text-6xl font-bold tracking-tight;
+}
+
+.hero-subtitle {
+  @apply mt-6 text-lg leading-8 text-gray-600;
+}
+
+.features {
+  @apply grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3 py-24;
+}
+
+.feature {
+  @apply relative pl-16;
+}
+
+.feature-icon {
+  @apply absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-lg bg-gray-900 text-white;
+}
+
+.cta {
+  @apply bg-gray-900 text-white text-center py-24 sm:py-32;
+}
+
+.cta-title {
+  @apply text-3xl sm:text-4xl font-bold tracking-tight;
+}
+
+.cta-subtitle {
+  @apply mt-6 max-w-xl mx-auto text-lg leading-8 text-gray-300;
+}
+
+.cta-buttons {
+  @apply mt-10 flex items-center justify-center gap-x-6;
+}
+
+@layer utilities {
+  .bg-grid {
+    background-size: 100px 100px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  }
+  
+  .bg-grid-white {
+    mask-image: linear-gradient(to bottom, transparent, 10%, white, 90%, transparent);
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Smooth scrolling and better font rendering */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Gradient text support */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

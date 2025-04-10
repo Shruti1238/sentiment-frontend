@@ -1,0 +1,285 @@
+/* LandingPage.css */
+
+/* 1. Noise background */
+.noise-bg {
+    background-image: url('data:image/svg+xml;charset=UTF-8,\
+      <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" opacity="0.05">\
+        <filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4"/></filter>\
+        <rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
+    animation: noise-float 10s infinite linear;
+  }
+  
+  @keyframes noise-float {
+    from { transform: translate(0, 0); }
+    to   { transform: translate(-200px, -200px); }
+  }
+  
+  /* 2. Glow badge for “New” label */
+  .glow-badge {
+    @apply inline-block px-4 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-purple-600 to-blue-600 text-white relative;
+  }
+  .glow-badge::before {
+    content: '';
+    @apply absolute inset-0 rounded-full blur-xl opacity-50;
+    background: inherit;
+    z-index: -1;
+  }
+  
+  /* 3. Stats cards */
+  .stats-card {
+    @apply bg-white/5 backdrop-blur-sm rounded-xl p-6 text-center flex flex-col items-center justify-center shadow-lg transition-transform hover:-translate-y-1 hover:shadow-2xl;
+    animation: gentle-float 6s ease-in-out infinite;
+    animation-delay: var(--float-delay, 0s);
+  }
+  
+  /* 4. Feature cards */
+  .feature-card {
+    @apply bg-white/5 backdrop-blur-sm rounded-2xl p-8 transition-transform hover:scale-105 hover:shadow-2xl;
+    animation: gentle-float 6s ease-in-out infinite;
+    animation-delay: var(--float-delay, 0s);
+  }
+  .feature-card svg {
+    @apply transition-transform group-hover:scale-110;
+  }
+  .feature-card:nth-child(2) { --float-delay: -1s; }
+  .feature-card:nth-child(3) { --float-delay: -2s; }
+  
+  /* 5. Use‑case cards */
+  .use-case-card {
+    @apply bg-white/5 backdrop-blur-sm rounded-2xl p-6 text-center flex flex-col items-center transition-transform hover:scale-105 hover:shadow-2xl;
+  }
+  .icon-wrapper {
+    @apply p-4 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full mb-4 text-white;
+  }
+  
+  /* 6. Demo container & screen */
+  .demo-container {
+    @apply bg-white/5 backdrop-blur-sm rounded-2xl p-8 shadow-xl relative overflow-hidden;
+    position: relative;
+  }
+  .demo-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at center,
+      rgba(123, 97, 255, 0.1) 0%,
+      rgba(0, 0, 0, 0) 70%
+    );
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
+  .demo-screen {
+    @apply bg-black/80 rounded-lg overflow-hidden border border-white/20;
+  }
+  .demo-header {
+    @apply flex items-center justify-between bg-white/10 px-4 py-2;
+  }
+  .demo-dots span {
+    @apply inline-block w-2 h-2 bg-red-500 rounded-full mr-1;
+  }
+  .demo-title {
+    @apply text-gray-300 font-mono text-sm;
+  }
+  .demo-content {
+    @apply p-6 flex flex-col gap-6;
+  }
+  .demo-textarea {
+    @apply bg-white/10 backdrop-blur-sm rounded-md p-4 text-gray-200 min-h-[80px];
+  }
+  .demo-results .result-item {
+    @apply flex justify-between items-center mb-2;
+  }
+  .demo-results .emotion {
+    @apply inline-block h-2 rounded-full mr-2 transition-all;
+  }
+  
+  /* 7. Pricing cards */
+  .pricing-card {
+    @apply bg-white/5 backdrop-blur-sm rounded-2xl p-8 flex flex-col justify-between transition-transform hover:-translate-y-1 hover:shadow-2xl;
+    animation: gentle-float 6s ease-in-out infinite;
+    animation-delay: var(--float-delay, 0s);
+  }
+  .pricing-card.highlighted {
+    @apply bg-gradient-to-br from-purple-600 to-blue-600 text-white shadow-2xl;
+  }
+  .pricing-card .inner {
+    @apply flex flex-col h-full;
+  }
+  
+  /* 8. CTA container */
+  .cta-container {
+    @apply relative bg-gradient-to-br from-purple-900 to-blue-900 rounded-3xl p-16 overflow-hidden;
+  }
+  .cta-container::before {
+    @apply absolute inset-0 bg-white/5 backdrop-blur-md;
+  }
+  .cta-content {
+    @apply relative z-10;
+  }
+  
+  /* 9. Utility tweaks */
+  .bg-grid-white\/[0\.02] {
+    background-image: radial-gradient(circle at 0 0, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  .shadow-glow {
+    box-shadow: 
+      0 0 20px rgba(128, 90, 213, 0.5),
+      0 0 40px rgba(90, 149, 242, 0.5),
+      0 0 60px rgba(90, 149, 242, 0.2);
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+  }
+
+  /* 10. OpenAI-style utilities */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400;
+    background-size: 200% auto;
+    animation: shine 8s linear infinite;
+  }
+
+  @keyframes shine {
+    to { background-position: 200% center; }
+  }
+
+  .glass-panel {
+    @apply bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    animation: glass-shine 8s ease-in-out infinite;
+  }
+
+  @keyframes glass-shine {
+    0% { left: -100%; }
+    20%, 100% { left: 100%; }
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300;
+    transform: translateY(0);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px) scale(1.01);
+    @apply shadow-xl shadow-purple-500/20;
+  }
+
+  /* 11. Animated elements */
+  .pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(to right, rgba(131, 58, 180, 0.5), rgba(29, 78, 216, 0.5));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .gradient-border:hover::before {
+    opacity: 1;
+  }
+
+  /* 12. Code block styling */
+  .code-block {
+    @apply font-mono text-sm bg-black/50 rounded-lg p-4 border border-white/10;
+  }
+
+  .code-block pre {
+    @apply m-0;
+  }
+
+  /* 13. Input and button enhancements */
+  .ai-input {
+    @apply bg-black/30 border border-white/10 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all;
+  }
+
+  .ai-button {
+    @apply bg-gradient-to-r from-purple-600 via-blue-600 to-purple-600 
+           text-white font-medium px-6 py-2 rounded-lg transition-all duration-300
+           hover:shadow-lg hover:shadow-purple-500/25 active:scale-95;
+    background-size: 200% auto;
+    animation: gradient-shift 8s linear infinite;
+  }
+
+  @keyframes gradient-shift {
+    to { background-position: 200% center; }
+  }
+
+  /* 14. Loading and interaction states */
+  .loading-dots::after {
+    content: '...';
+    animation: loading 1.2s steps(4, end) infinite;
+    display: inline-block;
+    width: 1.5em;
+    vertical-align: bottom;
+    overflow: hidden;
+  }
+
+  @keyframes loading {
+    0%, 100% { content: '.'; }
+    33% { content: '..'; }
+    66% { content: '...'; }
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  @keyframes gentle-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
